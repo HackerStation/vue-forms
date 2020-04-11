@@ -108,6 +108,13 @@
         <div
           class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
         >
+          <AppSwitch :isOn="isOn" v-model="isOn" />
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
+        >
           <button class="btn btn-primary">Submit!</button>
         </div>
       </div>
@@ -132,7 +139,7 @@
             </ul>
             <p>Gender: {{ gender }}</p>
             <p>Priority: {{ selectedPriority }}</p>
-            <p>Switched:</p>
+            <p>Switched: {{ isOn ? 'On' : 'Off' }}</p>
           </div>
         </div>
       </div>
@@ -141,7 +148,12 @@
 </template>
 
 <script>
+import Switch from './components/Switch';
+
 export default {
+  components: {
+    AppSwitch: Switch
+  },
   data() {
     return {
       userData: {
@@ -153,7 +165,8 @@ export default {
       sendMail: [],
       gender: null,
       selectedPriority: null,
-      priorities: ['High', 'Medium', 'Low']
+      priorities: ['High', 'Medium', 'Low'],
+      isOn: true
     };
   }
 };
